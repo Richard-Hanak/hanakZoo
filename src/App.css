@@ -1,0 +1,17 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.image-gallery-thumbnails-wrapper .image-gallery-thumbnails .image-gallery-thumbnails-container {
+    position: relative;
+    z-index: 1000;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    position: relative;
+    z-index: 1000;
+}
