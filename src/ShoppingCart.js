@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    fontFamily: "Sahitya-Bold",
+    fontFamily: "RobotoCondensed-Bold",
     width: 180,
     padding: 8,
     paddingLeft: 14,

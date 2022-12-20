@@ -8,8 +8,8 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import heavenlyBold from "./fonts/Heavenly-bold.ttf";
-import sahityaBold from "./fonts/Sahitya-Bold.ttf";
-import sahityaRegular from "./fonts/Sahitya-Regular.ttf";
+import RobotoCondensedBold from "./fonts/RobotoCondensed-Bold.ttf";
+import RobotoCondensedRegular from "./fonts/RobotoCondensed-Regular.ttf";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Button from "@material-ui/core/Button";
 import "./App.css";
@@ -34,23 +34,23 @@ const heavenly = {
   `,
 };
 
-const sahityaB = {
-  fontFamily: "Sahitya-Bold",
+const RobotoCondensedB = {
+  fontFamily: "RobotoCondensed-Bold",
   fontStyle: "bold",
   fontDisplay: "swap",
   src: `
-    local('Sahitya-Bold'),
-    url(${sahityaBold}) format('truetype')
+    local('RobotoCondensed-Bold'),
+    url(${RobotoCondensedBold}) format('truetype')
   `,
 };
 
-const sahityaR = {
-  fontFamily: "SahityaR",
+const RobotoCondensedR = {
+  fontFamily: "RobotoCondensedR",
   fontStyle: "regular",
   fontDisplay: "swap",
   src: `
-    local('Sahitya-Regular'),
-    url(${sahityaRegular}) format('truetype')
+    local('RobotoCondensed-Regular'),
+    url(${RobotoCondensedRegular}) format('truetype')
   `,
 };
 
@@ -73,12 +73,12 @@ function App() {
       },
     },
     typography: {
-      fontFamily: "sahityaR, Arial",
+      fontFamily: "RobotoCondensedR, Arial",
     },
     overrides: {
       MuiCssBaseline: {
         "@global": {
-          "@font-face": [sahityaR, sahityaB, heavenly],
+          "@font-face": [RobotoCondensedR, RobotoCondensedB, heavenly],
         },
       },
     },

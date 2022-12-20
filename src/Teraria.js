@@ -117,15 +117,16 @@ const Teraria = ({ state }) => {
               nav={false}
             />*/}
           </div>
-          <Grid item xs="auto">
+          <Grid item xs="auto" style={{ flexGrow: 1 }}>
             <h1>Teráriá</h1>
             <p>Spravíme terária na mieru bla bla.</p>
-            <Grid direction="row" container>
-              <Grid item>
+            <Grid direction="row" container spacing={8}>
+              <Grid item lg={6}>
                 <h3>Rozmery</h3>
-                <p>Výška</p>
+                <p style={{ marginTop: 20 }}>{`Výška: ${
+                  dimensions.vyska ? dimensions.vyska + "cm" : ""
+                } `}</p>
                 <Slider
-                  valueLabelDisplay="on"
                   step={1}
                   aria-label="Výška"
                   value={dimensions.vyska}
@@ -135,9 +136,10 @@ const Teraria = ({ state }) => {
                     })
                   }
                 />
-                <p>Šírka</p>
+                <p style={{ marginTop: 20 }}>{`Šírka: ${
+                  dimensions.sirka ? dimensions.sirka + "cm" : ""
+                } `}</p>
                 <Slider
-                  valueLabelDisplay="on"
                   step={1}
                   aria-label="Šírka"
                   value={dimensions.sirka}
@@ -147,9 +149,10 @@ const Teraria = ({ state }) => {
                     })
                   }
                 />
-                <p>Hĺbka</p>
+                <p style={{ marginTop: 20 }}>{`Hĺbka: ${
+                  dimensions.hlbka ? dimensions.hlbka + "cm" : ""
+                } `}</p>
                 <Slider
-                  valueLabelDisplay="on"
                   step={1}
                   aria-label="Hĺbka"
                   value={dimensions.hlbka}
@@ -160,7 +163,7 @@ const Teraria = ({ state }) => {
                   }
                 />
               </Grid>
-              <Grid item>
+              <Grid item lg={6}>
                 <h3>Materiál vrchnáku</h3>
                 <RadioGroup
                   row
@@ -198,25 +201,25 @@ const Teraria = ({ state }) => {
                     control={<Radio />}
                     label="Krémová"
                   />
-                  <h3>Druh hmyzu</h3>
-                  <RadioGroup
-                    row
-                    aria-labelledby="demo-controlled-radio-buttons-group"
-                    name="controlled-radio-buttons-group"
-                    value={type}
-                    onChange={(event) => setType(event.target.value)}
-                  >
-                    <FormControlLabel
-                      value="modlivky"
-                      control={<Radio />}
-                      label="Modlivky"
-                    />
-                    <FormControlLabel
-                      value="strasilky"
-                      control={<Radio />}
-                      label="Strašilky"
-                    />
-                  </RadioGroup>
+                </RadioGroup>
+                <h3>Druh hmyzu</h3>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-controlled-radio-buttons-group"
+                  name="controlled-radio-buttons-group"
+                  value={type}
+                  onChange={(event) => setType(event.target.value)}
+                >
+                  <FormControlLabel
+                    value="modlivky"
+                    control={<Radio />}
+                    label="Modlivky"
+                  />
+                  <FormControlLabel
+                    value="strasilky"
+                    control={<Radio />}
+                    label="Strašilky"
+                  />
                 </RadioGroup>
               </Grid>
             </Grid>

@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    fontFamily: "SahityaR",
+    fontFamily: "RobotoCondensedR",
     color: theme.text.primary.main,
   },
 }));
