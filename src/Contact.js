@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
+import ImageSlider from "./ImageSlider";
 import Step from "@material-ui/core/Step";
 import { Typography, Grid } from "@material-ui/core";
 import StepLabel from "@material-ui/core/StepLabel";
@@ -13,6 +14,21 @@ import BottomNav from "./BottomNav";
 import TextField from "@material-ui/core/TextField";
 import useFormValidation from "./Checkout/useFormValidation";
 import validateFormWarning from "./Checkout/validateFormWarning";
+import a1 from "./images/front1.jpg";
+import a3 from "./images/front3.jpg";
+import a2 from "./images/front2.jpg";
+
+const images = [
+  {
+    original: a3,
+  },
+  {
+    original: a1,
+  },
+  {
+    original: a2,
+  },
+];
 
 const useStyles = makeStyles((theme) => ({
   Frontpage: {
@@ -35,14 +51,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     flexDirection: "column",
     width: "80%",
-    maxWidth: 700,
+    width: 400,
   },
   welcome: {
     padding: 40,
-    paddingRight: 86,
     paddingTop: 80,
-    fontSize: 120,
-    fontFamily: "heavenly",
+    fontSize: 60,
+    letterSpacing: 1.6,
+    fontFamily: "RobotoCondensedB",
     color: theme.text.primary.main,
     [theme.breakpoints.down("sm")]: {
       fontSize: 100,
@@ -63,9 +79,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    marginTop: theme.spacing(3),
-    //marginLeft: theme.spacing(1),
-    color: "white",
+    padding: 1,
+    paddingLeft: 22,
+    paddingRight: 22,
+    fontSize: 18,
+    textTransform: "none",
   },
   welcomeText: {
     position: "relative",
@@ -116,22 +134,25 @@ export default function Contact({ state }) {
       <div style={{ display: "flex", flexDirection: "row" }}>
         <NavBar state={state} />
         <Grid container spacing={3} style={{ height: "100vh", width: "100%" }}>
-          <div
+          <ImageSlider
+            autoPlay={true}
+            thumbnails={false}
+            showBullets={true}
+            items={images}
+            nav={false}
+          />
+          <Grid
+            item
+            xs="auto"
             style={{
-              backgroundColor: "grey",
-              width: "56.25vh",
-              height: "100vh",
+              justifyContent: "center",
+              flexGrow: 1,
+              margin: 20,
+              position: "relative",
+              left: -100,
+              top: 100,
             }}
           >
-            {/*<ImageSlider
-              autoPlay={true}
-              thumbnails={false}
-              showBullets={true}
-              items={images}
-              nav={false}
-            />*/}
-          </div>
-          <Grid item xs="auto">
             <CssBaseline />
 
             <div className={classes.contentWrap}>
@@ -142,13 +163,14 @@ export default function Contact({ state }) {
                 className={classes.welcome}
               >
                 Kontakt
-              </Typography>{" "}
+              </Typography>
               {!thx ? (
                 <div className={classes.form}>
                   <TextField
                     fullWidth
                     id="mail"
                     name="mail"
+                    multiline
                     label="váš e-mail"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -171,6 +193,7 @@ export default function Contact({ state }) {
                     onClick={() => {
                       handleSubmit();
                     }}
+                    style={{ marginTop: 20 }}
                     color="primary"
                     className={classes.button}
                     variant="contained"

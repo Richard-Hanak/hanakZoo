@@ -3,7 +3,12 @@ import ImageGallery from "react-image-gallery";
 
 function ImageSlider(props) {
   return (
-    <div>
+    <div
+      style={{
+        boxShadow: "0 0 20px 0px #0000008c",
+        marginRight: 100,
+      }}
+    >
       <ImageGallery
         items={props.items}
         showFullscreenButton={false}
@@ -12,6 +17,7 @@ function ImageSlider(props) {
         autoPlay={props.autoPlay}
         showThumbnails={props.thumbnails}
         showNav={props.nav}
+        infinite={true}
       />
     </div>
   );

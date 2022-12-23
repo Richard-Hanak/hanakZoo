@@ -58,17 +58,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   logo: {
-    width: 126,
+    width: 100,
     [theme.breakpoints.down("xs")]: {
       display: "none",
     },
     [theme.breakpoints.down("md")]: {
-      width: 200,
+      width: 100,
     },
   },
   logowrap: {
     position: "absolute",
-    left: 0,
+    left: 10,
+    top: 4,
     height: 126,
     width: 126,
     [theme.breakpoints.down("xs")]: {
@@ -147,7 +148,7 @@ const NavBar = ({ alignBottom, state }) => {
 
     prevOpen.current = open;
   }, [open]);
-
+  console.log(window.location.pathname);
   return (
     <div className={classes.rapper}>
       <AppBar position="static" color="transparent" elevation={0}>
@@ -156,14 +157,18 @@ const NavBar = ({ alignBottom, state }) => {
           style={alignBottom ? { borderTop: "none" } : {}}
           alt="logo"
         >
-          <div className={alignBottom ? classes.logowrapBot : classes.logowrap}>
-            <Link to="/">
-              <img
-                src={logo}
-                className={alignBottom ? classes.logoBottom : classes.logo}
-              />
-            </Link>
-          </div>
+          {window.location.pathname !== "/" && (
+            <div
+              className={alignBottom ? classes.logowrapBot : classes.logowrap}
+            >
+              <Link to="/">
+                <img
+                  src={logo}
+                  className={alignBottom ? classes.logoBottom : classes.logo}
+                />
+              </Link>
+            </div>
+          )}
           <div className={classes.navContent}>
             <Link to="/teraria">
               <Typography

@@ -14,16 +14,6 @@ import BottomNav from "./BottomNav";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import ClearIcon from "@material-ui/icons/Clear";
-import ruzenka from "./images/fotky/ruzenka/thumbnails/2.jpg";
-import angelika from "./images/fotky/angelika/thumbnails/3.jpg";
-import lejka from "./images/fotky/lejka/thumbnails/1.jpg";
-import amelia from "./images/fotky/amelia/thumbnails/3.jpg";
-import jazmina from "./images/fotky/jasmina/thumbnails/1.png";
-import riasenie from "./images/fotky/riasenie/thumbnails/1.jpg";
-import gerdaKay from "./images/fotky/gerda/thumbnails/1.jpg";
-import ameliaKay from "./images/fotky/amelia/thumbnails/3.jpg";
-import gerda from "./images/fotky/gerda/thumbnails/1.jpg";
-import kay from "./images/fotky/gerda/thumbnails/1.jpg";
 import Divider from "@material-ui/core/Divider";
 import ReactPixel from "react-facebook-pixel";
 
@@ -165,18 +155,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let images = {
-  ruzenka,
-  angelika,
-  lejka,
-  riasenie,
-  jazmina,
-  gerdaKay,
-  gerda,
-  kay,
-  amelia,
-  ameliaKay,
-};
 let names = {
   ruzenka: "Ruženka",
   angelika: "Angelika",
@@ -220,7 +198,6 @@ export default function ShoppingCart({ state, handleStateChange }) {
         {state.map((item) =>
           item.buy ? (
             <Paper className={classes.paper}>
-              <img src={images[item.name]} className={classes.img}></img>
               <Typography
                 component="h1"
                 variant="h4"
@@ -288,7 +265,6 @@ export default function ShoppingCart({ state, handleStateChange }) {
         {state.map((item) =>
           item.rent ? (
             <Paper className={classes.paper}>
-              <img src={images[item.name]} className={classes.img}></img>
               <Typography
                 component="h1"
                 variant="h4"

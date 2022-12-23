@@ -5,9 +5,9 @@
     z-index: 1000;
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0 ;
+    padding: 0 ;
+    box-sizing: border-box !important;
 }
 
 a {
@@ -17,5 +17,24 @@ a {
 }
 
 p {
-    font-size: 1rem;
+    color: #555659;
+    font-size: 20px;
+    text-align: left;
 }
+.MuiFormControlLabel-label  {
+    color: #555659 !important;
+    font-size: 20px !important;
+    text-align: left !important;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+    max-height: 100vh;
+}
+
+.image-gallery-slide .image-gallery-image {
+    width: 56.25vh;
+}
+.MuiGrid-spacing-xs-3 {margin: 0 !important}
+
+.MuiGrid-spacing-xs-8 {width: 100% !important}
+.MuiGrid-spacing-xs-3 {width: 100% !important}

@@ -1,15 +1,13 @@
 import React, { useState, useCallback, useReducer, useEffect } from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import background from "./images/pozadie2.svg";
 import {
   useTheme,
   makeStyles,
   createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import heavenlyBold from "./fonts/Heavenly-bold.ttf";
-import RobotoCondensedBold from "./fonts/RobotoCondensed-Bold.ttf";
-import RobotoCondensedRegular from "./fonts/RobotoCondensed-Regular.ttf";
+import RobotoCondensedBold from "./fonts/Average-Regular.ttf";
+import RobotoCondensedRegular from "./fonts/Oswald-Regular.ttf";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Button from "@material-ui/core/Button";
 import "./App.css";
@@ -24,23 +22,13 @@ import Contact from "./Contact";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-const heavenly = {
-  fontFamily: "heavenly",
-  fontStyle: "bold",
-  fontDisplay: "swap",
-  src: `
-    local('heavenly-bold'),
-    url(${heavenlyBold}) format('truetype')
-  `,
-};
-
 const RobotoCondensedB = {
-  fontFamily: "RobotoCondensed-Bold",
+  fontFamily: "RobotoCondensedB",
   fontStyle: "bold",
   fontDisplay: "swap",
   src: `
-    local('RobotoCondensed-Bold'),
-    url(${RobotoCondensedBold}) format('truetype')
+    local('Average-Regular'),
+    url(${RobotoCondensedRegular}) format('truetype')
   `,
 };
 
@@ -49,8 +37,8 @@ const RobotoCondensedR = {
   fontStyle: "regular",
   fontDisplay: "swap",
   src: `
-    local('RobotoCondensed-Regular'),
-    url(${RobotoCondensedRegular}) format('truetype')
+    local('Oswald-Regular'),
+    url(${RobotoCondensedBold}) format('truetype')
   `,
 };
 
@@ -78,7 +66,7 @@ function App() {
     overrides: {
       MuiCssBaseline: {
         "@global": {
-          "@font-face": [RobotoCondensedR, RobotoCondensedB, heavenly],
+          "@font-face": [RobotoCondensedR, RobotoCondensedB],
         },
       },
     },
