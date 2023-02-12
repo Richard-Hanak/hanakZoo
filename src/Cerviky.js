@@ -48,12 +48,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontFamily: "RobotoCondensedB",
     color: "#136d23",
-    [theme.breakpoints.down("md")]: {
-      top: 80,
-      right: 54,
-      padding: 0,
-      fontSize: 22,
-    },
   },
 
   title: {
@@ -61,12 +55,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontFamily: "RobotoCondensedB",
     color: "#136d23",
-    [theme.breakpoints.down("md")]: {
-      top: 80,
-      right: 54,
-      padding: 0,
-      fontSize: 22,
-    },
   },
 
   text: {
@@ -75,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.text.primary.main,
     [theme.breakpoints.down("md")]: {
       padding: 0,
-      fontSize: 22,
+      fontSize: 19,
     },
   },
 }));
@@ -92,21 +80,27 @@ const Cerviky = ({ state }) => {
         <Grid
           container
           spacing={3}
-          style={{ height: "100vh", width: "100%", flexWrap: "nowrap" }}
+          style={{
+            height: isMobile ? "100%" : "100vh",
+            width: "100%",
+            flexWrap: "nowrap",
+          }}
         >
           <div>
-            <ImageSlider
-              style={{
-                backgroundColor: "grey",
-                width: "56.25vh",
-                height: "100vh",
-              }}
-              autoPlay={true}
-              thumbnails={false}
-              showBullets={true}
-              items={images}
-              nav={false}
-            />
+            {!isMobile && (
+              <ImageSlider
+                style={{
+                  backgroundColor: "grey",
+                  width: "56.25vh",
+                  height: "100vh",
+                }}
+                autoPlay={true}
+                thumbnails={false}
+                showBullets={true}
+                items={images}
+                nav={false}
+              />
+            )}
           </div>
           <Grid
             item

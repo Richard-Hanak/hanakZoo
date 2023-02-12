@@ -47,12 +47,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontFamily: "RobotoCondensedB",
     color: "#136d23",
-    [theme.breakpoints.down("md")]: {
-      top: 80,
-      right: 54,
-      padding: 0,
-      fontSize: 22,
-    },
   },
 
   title: {
@@ -60,12 +54,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontFamily: "RobotoCondensedB",
     color: "#136d23",
-    [theme.breakpoints.down("md")]: {
-      top: 80,
-      right: 54,
-      padding: 0,
-      fontSize: 22,
-    },
   },
 
   text: {
@@ -74,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.text.primary.main,
     [theme.breakpoints.down("md")]: {
       padding: 0,
-      fontSize: 22,
+      fontSize: 19,
     },
   },
 }));
@@ -106,18 +94,20 @@ const Teraria = ({ state }) => {
           container
           spacing={3}
           style={{
-            height: "100vh",
+            height: isMobile ? "100%" : "100vh",
             width: "100%",
             flexWrap: "nowrap",
           }}
         >
-          <ImageSlider
-            autoPlay={true}
-            thumbnails={false}
-            showBullets={true}
-            items={images}
-            nav={false}
-          />
+          {!isMobile && (
+            <ImageSlider
+              autoPlay={true}
+              thumbnails={false}
+              showBullets={true}
+              items={images}
+              nav={false}
+            />
+          )}
           <Grid
             item
             xs="auto"
@@ -153,7 +143,6 @@ const Teraria = ({ state }) => {
                 <p
                   className={classes.text}
                   style={{
-                    paddingBottom: 40,
                     maxWidth: 800,
                   }}
                 >
@@ -176,139 +165,19 @@ const Teraria = ({ state }) => {
                 }}
               >
                 <p
-                  className={classes.text}
+                  className={classes.title}
                   style={{
-                    paddingTop: 20,
+                    position: "relative",
+                    top: 22,
+                    paddingBottom: 0,
+                    paddingTop: 0,
                     maxWidth: 800,
                     fontWeight: 600,
+                    fontSize: 28,
                   }}
                 >
-                  Po zadaní požadovaných údajov, Vám kalkulačka vypočíta
-                  približnú sumu.
+                  Mini
                 </p>
-              </Grid>
-            </Grid>
-            <Grid
-              direction="row"
-              container
-              spacing={8}
-              style={{
-                justifyContent: "space-between",
-                flexGrow: 1,
-                padding: 20,
-                maxWidth: 900,
-              }}
-            >
-              <Grid item lg={6} style={{ maxWidth: 400, position: "relative" }}>
-                <h3 className={classes.title}>Rozmery</h3>
-                <p style={{ marginTop: 20 }}>{`Výška: ${
-                  dimensions.vyska ? dimensions.vyska + "cm" : ""
-                } `}</p>
-                <Slider
-                  step={1}
-                  aria-label="Výška"
-                  value={dimensions.vyska}
-                  onChange={(_, val) =>
-                    setDimensions((pv) => {
-                      return { ...pv, vyska: val };
-                    })
-                  }
-                />
-                <p style={{ marginTop: 20 }}>{`Šírka: ${
-                  dimensions.sirka ? dimensions.sirka + "cm" : ""
-                } `}</p>
-                <Slider
-                  step={1}
-                  aria-label="Šírka"
-                  value={dimensions.sirka}
-                  onChange={(_, val) =>
-                    setDimensions((pv) => {
-                      return { ...pv, sirka: val };
-                    })
-                  }
-                />
-                <p style={{ marginTop: 20 }}>{`Hĺbka: ${
-                  dimensions.hlbka ? dimensions.hlbka + "cm" : ""
-                } `}</p>
-                <Slider
-                  step={1}
-                  aria-label="Hĺbka"
-                  value={dimensions.hlbka}
-                  onChange={(_, val) =>
-                    setDimensions((pv) => {
-                      return { ...pv, hlbka: val };
-                    })
-                  }
-                />
-              </Grid>
-              <Grid item lg={6} style={{ maxWidth: 400 }}>
-                <h3 className={classes.title}>Materiál vrchnáku</h3>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-controlled-radio-buttons-group"
-                  name="controlled-radio-buttons-group"
-                  value={material}
-                  onChange={(event) => setMaterial(event.target.value)}
-                >
-                  <FormControlLabel
-                    style={{ fontSize: 20 }}
-                    value="drevo"
-                    control={<Radio />}
-                    label="Drevo"
-                  />
-                  <FormControlLabel
-                    style={{ fontSize: 20 }}
-                    value="plexisklo"
-                    control={<Radio />}
-                    label="Plexisklo s nálepkou"
-                  />
-                </RadioGroup>
-                <h3 className={classes.title} style={{ marginTop: 20 }}>
-                  Typ nálepky
-                </h3>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-controlled-radio-buttons-group"
-                  name="controlled-radio-buttons-group"
-                  value={nalepka}
-                  onChange={(event) => setNalepka(event.target.value)}
-                >
-                  <FormControlLabel
-                    style={{ fontSize: 20 }}
-                    value="hneda"
-                    control={<Radio />}
-                    label="hnedá"
-                  />
-                  <FormControlLabel
-                    style={{ fontSize: 20 }}
-                    value="kremova"
-                    control={<Radio />}
-                    label="Krémová"
-                  />
-                </RadioGroup>
-                <h3 className={classes.title} style={{ marginTop: 20 }}>
-                  Druh hmyzu
-                </h3>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-controlled-radio-buttons-group"
-                  name="controlled-radio-buttons-group"
-                  value={type}
-                  onChange={(event) => setType(event.target.value)}
-                >
-                  <FormControlLabel
-                    style={{ fontSize: 20 }}
-                    value="modlivky"
-                    control={<Radio />}
-                    label="Modlivky"
-                  />
-                  <FormControlLabel
-                    style={{ fontSize: 20 }}
-                    value="strasilky"
-                    control={<Radio />}
-                    label="Strašilky"
-                  />
-                </RadioGroup>
               </Grid>
               <Grid
                 item
@@ -322,13 +191,195 @@ const Teraria = ({ state }) => {
                 <p
                   className={classes.text}
                   style={{
-                    fontWeight: 600,
-                    fontSize: 24,
-                    paddingTop: 60,
+                    paddingBottom: 0,
+                    paddingTop: 0,
                     maxWidth: 800,
                   }}
                 >
-                  Približná cena: 50€
+                  <b>Výška:</b> do 20cm <br /> <b>cena:</b> od 40€
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  position: "relative",
+                  top: -10,
+                  paddingTop: 0,
+                  width: "100%",
+                  justifyContent: "left",
+                  display: "flex",
+                }}
+              >
+                <p
+                  className={classes.text}
+                  style={{
+                    maxWidth: 800,
+                  }}
+                >
+                  Vhodné pre modlivky a malé druhy pakobyliek napr. (Sungaya
+                  inexpectata, phyllium philippinicum).
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  width: "100%",
+                  justifyContent: "left",
+                  display: "flex",
+                  paddingTop: 0,
+                }}
+              >
+                <p
+                  className={classes.title}
+                  style={{
+                    position: "relative",
+                    top: 22,
+                    paddingBottom: 0,
+                    paddingTop: 0,
+                    maxWidth: 800,
+                    fontWeight: 600,
+                    fontSize: 28,
+                  }}
+                >
+                  Štandard
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  width: "100%",
+                  justifyContent: "left",
+                  display: "flex",
+                }}
+              >
+                <p
+                  className={classes.text}
+                  style={{
+                    paddingBottom: 0,
+                    paddingTop: 0,
+                    maxWidth: 800,
+                  }}
+                >
+                  <b>Výška:</b> od 28cm <br /> <b>cena:</b> od 50€
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  position: "relative",
+                  top: -10,
+                  paddingTop: 0,
+                  width: "100%",
+                  justifyContent: "left",
+                  display: "flex",
+                }}
+              >
+                <p
+                  className={classes.text}
+                  style={{
+                    maxWidth: 800,
+                  }}
+                >
+                  Vhodné pre všetky druhy nami chovaného hmyzu.
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  width: "100%",
+                  justifyContent: "left",
+                  display: "flex",
+                  paddingTop: 0,
+                }}
+              >
+                <p
+                  className={classes.title}
+                  style={{
+                    position: "relative",
+                    top: 22,
+                    paddingBottom: 0,
+                    paddingTop: 0,
+                    maxWidth: 800,
+                    fontWeight: 600,
+                    fontSize: 28,
+                  }}
+                >
+                  Exclusiv
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  width: "100%",
+                  justifyContent: "left",
+                  display: "flex",
+                }}
+              >
+                <p
+                  className={classes.text}
+                  style={{
+                    paddingBottom: 0,
+                    paddingTop: 0,
+                    maxWidth: 800,
+                  }}
+                >
+                  <b>Výška:</b> od 40cm <br /> <b>cena:</b> od 120€
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  position: "relative",
+                  top: -10,
+                  paddingTop: 0,
+                  width: "100%",
+                  justifyContent: "left",
+                  display: "flex",
+                }}
+              >
+                <p
+                  className={classes.text}
+                  style={{
+                    maxWidth: 800,
+                  }}
+                >
+                  <span style={{ textDecoration: "underline", marginRight: 6 }}>
+                    Polykarbonátové dno:
+                  </span>
+                  Zlepené s insektáriom (pevne spojené). <br />
+                  <span style={{ textDecoration: "underline", marginRight: 6 }}>
+                    Drevené dno:
+                  </span>
+                  Umožnujúce ľahšiu údržbu (nie je pevne spojené s insektáriom).
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  position: "relative",
+                  top: -10,
+                  paddingTop: 0,
+                  width: "100%",
+                  justifyContent: "left",
+                  display: "flex",
+                }}
+              >
+                <p
+                  className={classes.text}
+                  style={{
+                    paddingTop: 0,
+                    maxWidth: 800,
+                  }}
+                >
+                  čo živé do tejto nádhery? čo len chceš a kolko len chceš
                 </p>
               </Grid>
             </Grid>

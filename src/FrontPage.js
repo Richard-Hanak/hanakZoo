@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.text.primary.main,
     [theme.breakpoints.down("md")]: {
       padding: 0,
-      fontSize: 22,
+      fontSize: 19,
     },
   },
 
@@ -72,15 +72,21 @@ const Frontpage = ({ state }) => {
         <Grid
           container
           spacing={3}
-          style={{ height: "100vh", width: "100%", flexWrap: "nowrap" }}
+          style={{
+            height: isMobile ? "100%" : "100vh",
+            width: "100%",
+            flexWrap: "nowrap",
+          }}
         >
-          <ImageSlider
-            autoPlay={true}
-            thumbnails={false}
-            showBullets={true}
-            items={images}
-            nav={false}
-          />
+          {!isMobile && (
+            <ImageSlider
+              autoPlay={true}
+              thumbnails={false}
+              showBullets={true}
+              items={images}
+              nav={false}
+            />
+          )}
           <Grid
             item
             xs="auto"
@@ -99,7 +105,7 @@ const Frontpage = ({ state }) => {
                   display: "block",
                   position: "relative",
                   //  left: 38,
-                  top: -40,
+                  top: isMobile ? 0 : -40,
                 }}
               />
             </Grid>
@@ -108,17 +114,17 @@ const Frontpage = ({ state }) => {
               direction="row"
               style={{
                 width: "100%",
-                justifyContent: "left",
+                justifyContent: "center",
+                maxWidth: 800,
                 display: "flex",
               }}
             >
               <h4
                 className={classes.title}
                 style={{
-                  maxWidth: 800,
                   position: "relative",
-                  top: -48,
-                  right: -96,
+                  top: isMobile ? 0 : -48,
+                  //   right: isMobile ? 0 : -96,
                 }}
               >
                 Viac ako 20-ročná tradícia v chove exotických druhov plazov a
@@ -137,7 +143,7 @@ const Frontpage = ({ state }) => {
               <p
                 className={classes.text}
                 style={{
-                  paddingTop: 100,
+                  paddingTop: isMobile ? 70 : 100,
                   maxWidth: 800,
                   fontWeight: 600,
                 }}
@@ -158,7 +164,7 @@ const Frontpage = ({ state }) => {
               <p
                 className={classes.text}
                 style={{
-                  paddingTop: 160,
+                  paddingTop: isMobile ? 80 : 160,
                   maxWidth: 800,
                 }}
               >
@@ -177,7 +183,7 @@ const Frontpage = ({ state }) => {
                 justifyContent: "center",
                 display: "flex",
                 maxWidth: 800,
-                marginTop: 40,
+                marginTop: isMobile ? 60 : 40,
               }}
             >
               <>

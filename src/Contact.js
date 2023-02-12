@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import ImageSlider from "./ImageSlider";
 import Step from "@material-ui/core/Step";
 import { Typography, Grid } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import {
+  useTheme,
+  makeStyles,
+  ThemeProvider,
+  G,
+} from "@material-ui/core/styles";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
@@ -39,12 +45,7 @@ const useStyles = makeStyles((theme) => ({
     // backgroundImage: "url(" + background + ")",
     // backgroundSize: "cover",
   },
-  contentWrap: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-  },
+
   form: {
     display: "flex",
     alignItems: "center",
@@ -53,23 +54,16 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
     width: 400,
   },
-  welcome: {
-    padding: 40,
-    paddingTop: 80,
-    fontSize: 60,
-    letterSpacing: 1.6,
+  Welcome: {
+    marginTop: 200,
+    left: -4,
+    fontSize: 50,
+    textAlign: "center",
     fontFamily: "RobotoCondensedB",
-    color: theme.text.primary.main,
-    [theme.breakpoints.down("sm")]: {
-      fontSize: 100,
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: 80,
-    },
+    color: "#136d23",
   },
   welcomeWrap: {
     position: "relative",
-
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -96,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
       top: 80,
       right: 54,
       padding: 0,
-      fontSize: 22,
+      fontSize: 19,
     },
   },
   text: {
@@ -113,7 +107,10 @@ const stateMessage = {
 export default function Contact({ state }) {
   const classes = useStyles();
   const [thx, setThx] = useState(false);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
+    defaultMatches: true,
+  });
   const {
     handleBlur,
     handleChange,
@@ -133,14 +130,28 @@ export default function Contact({ state }) {
     <React.Fragment>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <NavBar state={state} />
-        <Grid container spacing={3} style={{ height: "100vh", width: "100%" }}>
-          <ImageSlider
-            autoPlay={true}
-            thumbnails={false}
-            showBullets={true}
-            items={images}
-            nav={false}
-          />
+        <Grid
+          container
+          spacing={3}
+          style={{
+            height: isMobile ? "100%" : "100vh",
+            minHeight: "100vh",
+            width: "100%",
+            flexWrap: "nowrap",
+            justifyContent: "center",
+            position: "relative",
+          }}
+        >
+          {!isMobile && (
+            <ImageSlider
+              isContact={true}
+              autoPlay={true}
+              thumbnails={false}
+              showBullets={true}
+              items={images}
+              nav={false}
+            />
+          )}
           <Grid
             item
             xs="auto"
@@ -149,114 +160,71 @@ export default function Contact({ state }) {
               flexGrow: 1,
               margin: 20,
               position: "relative",
-              left: -100,
-              top: 100,
             }}
           >
             <CssBaseline />
 
-            <div className={classes.contentWrap}>
+            <div>
               <Typography
                 component="h1"
                 variant="h4"
                 align="center"
-                className={classes.welcome}
+                style={{ marginTop: 100 }}
               >
-                Kontakt
+                <h1 className={classes.Welcome}>Kontakt</h1>
               </Typography>
-              {!thx ? (
-                <div className={classes.form}>
-                  <TextField
-                    fullWidth
-                    id="mail"
-                    name="mail"
-                    multiline
-                    label="váš e-mail"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    helperText={errors.mail}
-                    error={errors.mail}
-                  />
-                  <TextField
-                    style={{ marginTop: 30 }}
-                    fullWidth
-                    id="message"
-                    name="message"
-                    label="vaša správa"
-                    multiline
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={errors.message}
-                    helperText={errors.message}
-                  />
-                  <Button
-                    onClick={() => {
-                      handleSubmit();
-                    }}
-                    style={{ marginTop: 20 }}
-                    color="primary"
-                    className={classes.button}
-                    variant="contained"
-                  >
-                    Odoslať
-                  </Button>
-                </div>
-              ) : (
+
+              <div style={{ paddingTop: 40, paddingBottom: 40 }}>
                 <Typography
-                  variant="h4"
+                  variant="h5"
                   align="center"
                   className={classes.text}
-                  style={{ padding: 50 }}
                 >
-                  Ďakujeme za vašu správu. Odpovieme vám hneď, ako to bude
-                  možné.
+                  Ivo: 0903 390 866
                 </Typography>
-              )}
-              {/*<div style={{ paddingTop: 80, paddingBottom: 40 }}>
-                  <Typography
-                    variant="h5"
-                    align="center"
-                    className={classes.text}
-                    style={{ paddingTop: 50 }}
-                  >
-                    Iveta Jankolová
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    align="center"
-                    className={classes.text}
-                  >
-                    Nová 55
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    align="center"
-                    className={classes.text}
-                  >
-                    Sása 962 62
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    align="center"
-                    className={classes.text}
-                  >
-                    Tel. č.: +421904146671
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    align="center"
-                    className={classes.text}
-                  >
-                    IČO: 53 034 627
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    align="center"
-                    className={classes.text}
-                  >
-                    IBAN SK64 8360 5207 0042 0712 1043
-                  </Typography>
-                </div>*/}
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.text}
+                >
+                  Jana: 0904 513 045
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.text}
+                >
+                  Jakub: 0911 028 819
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.text}
+                  style={{ marginTop: 20 }}
+                >
+                  Adresa:
+                  <br />
+                  Nová 118
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.text}
+                >
+                  Sása 962 62
+                </Typography>
+
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.text}
+                  style={{ marginTop: 20 }}
+                >
+                  E-mail:
+                  <br /> www.hanakhmyz.sk <br />
+                  objednavky@hanakhmyz.sk
+                </Typography>
+              </div>
             </div>
           </Grid>
         </Grid>

@@ -15,6 +15,7 @@ import { Typography } from "@material-ui/core";
 import Frontpage from "./FrontPage";
 import Collections from "./Teraria";
 import Cerviky from "./Cerviky";
+import Galeria from "./Galeria";
 import Chrobaky from "./Chrobaky";
 import Teraria from "./Teraria";
 import ShoppingCart from "./ShoppingCart";
@@ -108,6 +109,9 @@ function App() {
               <Route exact path="/platba">
                 <Checkout />
               </Route> */}
+              <Route exact path="/galeria">
+                <Galeria />
+              </Route>
               <Route exact path="/kontakt">
                 <Contact />
               </Route>

@@ -1,14 +1,14 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { fade } from "@material-ui/core/styles/colorManipulator";
+import { useTheme, makeStyles } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import logo from "./images/logo.jpg";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   rapper: {
@@ -116,40 +116,53 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = ({ alignBottom, state }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
+    defaultMatches: true,
+  });
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
-
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
-  console.log(window.location.pathname);
-  return (
+  return isMobile ? (
+    <div>
+      <div className="container"></div>
+      <div
+        className={open ? "button_container active" : "button_container"}
+        id="toggle"
+        onClick={() => setOpen((pv) => !pv)}
+      >
+        <span className="top" />
+        <span className="middle" />
+        <span className="bottom" />
+      </div>
+      <div className={open ? "overlay open" : "overlay"} id="overlay">
+        <nav className="overlay-menu">
+          <ul>
+            <li>
+              <a href="/">Domov</a>
+            </li>
+            <li>
+              <a href="/teraria">Teráriá</a>
+            </li>
+            <li>
+              <a href="/chrobaky">Chrobáky</a>
+            </li>
+            <li>
+              <a href="/cerviky">Červíky</a>
+            </li>
+            <li>
+              <a href="/galeria">Galéria</a>
+            </li>
+            <li>
+              <a href="/kontakt">Kontakt</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  ) : (
     <div className={classes.rapper}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar

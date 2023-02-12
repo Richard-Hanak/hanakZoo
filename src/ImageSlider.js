@@ -6,7 +6,7 @@ function ImageSlider(props) {
     <div
       style={{
         boxShadow: "0 0 20px 0px #0000008c",
-        marginRight: 100,
+        marginRight: props.isContact ? 0 : 100,
       }}
     >
       <ImageGallery
