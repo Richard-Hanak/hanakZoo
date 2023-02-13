@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hanakZoo/precache-manifest.eedadd0328be1d046e67cc27f516fb21.js"
+  "/hanakZoo/precache-manifest.fcf53d756bed8dc333208b66a04c0381.js"
 );
 
 self.addEventListener('message', (event) => {
