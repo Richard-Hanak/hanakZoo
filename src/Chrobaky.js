@@ -11,7 +11,8 @@ import {
 import { Grid, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
 import a1 from "./images/chrobak1.jpg";
 import a2 from "./images/chrobak2.jpg";
-import phyllium from "./images/phyllium.webp";
+import a3 from "./images/chrobak3.jpg";
+import phyllium from "./images/phyllium.jpg";
 import extatosoma from "./images/extatosoma.jpg";
 import eurycanta from "./images/eurycanta.jpg";
 
@@ -21,6 +22,9 @@ const images = [
   },
   {
     original: a1,
+  },
+  {
+    original: a3,
   },
 ];
 const useStyles = makeStyles((theme) => ({

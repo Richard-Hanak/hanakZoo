@@ -17,6 +17,17 @@ import {
 } from "@material-ui/core";
 import a1 from "./images/terar1.png";
 import a2 from "./images/terar2.jpg";
+import a3 from "./images/terar3.jpg";
+import a4 from "./images/terar4.jpg";
+import a5 from "./images/terar5.jpg";
+import a6 from "./images/chrobak1.jpg";
+import a7 from "./images/chrobak2.jpg";
+import a8 from "./images/chrobak3.jpg";
+import a9 from "./images/cerv1.jpg";
+import a10 from "./images/cerv2.jpg";
+import a11 from "./images/front1.jpg";
+import a12 from "./images/front3.jpg";
+import a13 from "./images/front2.jpg";
 
 const images = [
   {
@@ -24,6 +35,39 @@ const images = [
   },
   {
     original: a1,
+  },
+  {
+    original: a3,
+  },
+  {
+    original: a4,
+  },
+  {
+    original: a5,
+  },
+  {
+    original: a6,
+  },
+  {
+    original: a7,
+  },
+  {
+    original: a8,
+  },
+  {
+    original: a9,
+  },
+  {
+    original: a10,
+  },
+  {
+    original: a11,
+  },
+  {
+    original: a12,
+  },
+  {
+    original: a13,
   },
 ];
 

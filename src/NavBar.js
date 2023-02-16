@@ -141,22 +141,22 @@ const NavBar = ({ alignBottom, state }) => {
         <nav className="overlay-menu">
           <ul>
             <li>
-              <a href="/">Domov</a>
+              <a href="/hanakZoo/">Domov</a>
             </li>
             <li>
-              <a href="/teraria">Teráriá</a>
+              <a href="/hanakZoo/teraria">Teráriá</a>
             </li>
             <li>
-              <a href="/chrobaky">Chrobáky</a>
+              <a href="/hanakZoo/chrobaky">Chrobáky</a>
             </li>
             <li>
-              <a href="/cerviky">Červíky</a>
+              <a href="/hanakZoo/cerviky">Červíky</a>
             </li>
             <li>
-              <a href="/galeria">Galéria</a>
+              <a href="/hanakZoo/galeria">Galéria</a>
             </li>
             <li>
-              <a href="/kontakt">Kontakt</a>
+              <a href="/hanakZoo/kontakt">Kontakt</a>
             </li>
           </ul>
         </nav>

@@ -89,7 +89,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className={classes.App}>
-          <Router>
+          <Router basename={"/hanakZoo"}>
             <Switch>
               <Route exact path="/">
                 <Frontpage />

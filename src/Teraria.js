@@ -17,6 +17,9 @@ import {
 } from "@material-ui/core";
 import a1 from "./images/terar1.png";
 import a2 from "./images/terar2.jpg";
+import a3 from "./images/terar3.jpg";
+import a4 from "./images/terar4.jpg";
+import a5 from "./images/terar5.jpg";
 
 const images = [
   {
@@ -24,6 +27,15 @@ const images = [
   },
   {
     original: a1,
+  },
+  {
+    original: a3,
+  },
+  {
+    original: a4,
+  },
+  {
+    original: a5,
   },
 ];
 

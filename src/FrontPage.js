@@ -14,6 +14,7 @@ import frontLogo from "./images/logoM.png";
 import a1 from "./images/front1.jpg";
 import a3 from "./images/front3.jpg";
 import a2 from "./images/front2.jpg";
+import a4 from "./images/terar3.jpg";
 
 const images = [
   {
@@ -24,6 +25,9 @@ const images = [
   },
   {
     original: a2,
+  },
+  {
+    original: a4,
   },
 ];
 
