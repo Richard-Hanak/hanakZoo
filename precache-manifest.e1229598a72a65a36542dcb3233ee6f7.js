@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fbc96594956bdd50d10558f36854dfa4",
+    "revision": "6ab90fe2bc11ba143d1f140debd2ca06",
     "url": "/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.40a775a0.chunk.css"
   },
   {
-    "revision": "1bfa07e056d1671d35f3",
+    "revision": "fe15129f2e826f76abb4",
     "url": "/static/css/main.63912038.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.0e575fef.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1bfa07e056d1671d35f3",
-    "url": "/static/js/main.9b7a3951.chunk.js"
+    "revision": "fe15129f2e826f76abb4",
+    "url": "/static/js/main.f2cd061a.chunk.js"
   },
   {
     "revision": "c4a5b86ed23ed9167b6a",
@@ -56,8 +56,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/chrobak3.495b95d6.jpg"
   },
   {
-    "revision": "286d229920e5721e629231ae6de722dd",
-    "url": "/static/media/dares.286d2299.jpg"
+    "revision": "19ea162d8e09b59aac155e0917eda7e9",
+    "url": "/static/media/dares.19ea162d.jpg"
   },
   {
     "revision": "ec9ad0847da859bebca3608ba338c12d",
