@@ -105,7 +105,7 @@ const Cerviky = ({ state }) => {
           <Grid
             item
             // xs="auto"
-            style={{ justifyContent: "center", flexGrow: 1 }}
+            style={{ justifyContent: "center", flexGrow: 1, margin: 20 }}
           >
             <Grid direction="column" container spacing={3}>
               <Grid

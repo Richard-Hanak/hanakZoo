@@ -77,20 +77,22 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 19,
     },
   },
+
+  gridCard: {
+    width: "50%",
+    marginTop: 40,
+    paddingRight: 20,
+    paddingLeft: 12,
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+    },
+  },
 }));
 const Teraria = ({ state }) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
     defaultMatches: true,
-  });
-  const [type, setType] = useState("");
-  const [nalepka, setNalepka] = useState("");
-  const [material, setMaterial] = useState("");
-  const [dimensions, setDimensions] = useState({
-    vyska: 0,
-    sirka: 0,
-    hlbka: 0,
   });
 
   return (
@@ -141,7 +143,9 @@ const Teraria = ({ state }) => {
                   position: "relative",
                 }}
               >
-                <h1 className={classes.Welcome}>Zákazková výroba terárií</h1>
+                <h1 className={classes.Welcome}>
+                  Zákazková výroba polykarbonátových terárií
+                </h1>
               </Grid>
               <Grid
                 item
@@ -177,222 +181,279 @@ const Teraria = ({ state }) => {
                 }}
               >
                 <p
-                  className={classes.title}
-                  style={{
-                    position: "relative",
-                    top: 22,
-                    paddingBottom: 0,
-                    paddingTop: 0,
-                    maxWidth: 800,
-                    fontWeight: 600,
-                    fontSize: 28,
-                  }}
-                >
-                  Mini
-                </p>
-              </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                }}
-              >
-                <p
-                  className={classes.text}
-                  style={{
-                    paddingBottom: 0,
-                    paddingTop: 0,
-                    maxWidth: 800,
-                  }}
-                >
-                  <b>Výška:</b> do 20cm <br /> <b>cena:</b> od 40€
-                </p>
-              </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  position: "relative",
-                  top: -10,
-                  paddingTop: 0,
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                }}
-              >
-                <p
                   className={classes.text}
                   style={{
                     maxWidth: 800,
                   }}
                 >
-                  Vhodné pre modlivky a malé druhy pakobyliek napr. (Sungaya
-                  inexpectata, phyllium philippinicum).
+                  Insektáriá sú kompletne zariadené: podstielka, samorast,
+                  vázička na černičie.
+                  <br />
+                  možnosť zaslať kuriérom. Balné + kurier cca 15 €
                 </p>
               </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                  paddingTop: 0,
-                }}
-              >
-                <p
-                  className={classes.title}
-                  style={{
-                    position: "relative",
-                    top: 22,
-                    paddingBottom: 0,
-                    paddingTop: 0,
-                    maxWidth: 800,
-                    fontWeight: 600,
-                    fontSize: 28,
-                  }}
-                >
-                  Štandard
-                </p>
-              </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                }}
-              >
-                <p
-                  className={classes.text}
-                  style={{
-                    paddingBottom: 0,
-                    paddingTop: 0,
-                    maxWidth: 800,
-                  }}
-                >
-                  <b>Výška:</b> od 28cm <br /> <b>cena:</b> od 50€
-                </p>
-              </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  position: "relative",
-                  top: -10,
-                  paddingTop: 0,
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                }}
-              >
-                <p
-                  className={classes.text}
-                  style={{
-                    maxWidth: 800,
-                  }}
-                >
-                  Vhodné pre všetky druhy nami chovaného hmyzu.
-                </p>
-              </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                  paddingTop: 0,
-                }}
-              >
-                <p
-                  className={classes.title}
-                  style={{
-                    position: "relative",
-                    top: 22,
-                    paddingBottom: 0,
-                    paddingTop: 0,
-                    maxWidth: 800,
-                    fontWeight: 600,
-                    fontSize: 28,
-                  }}
-                >
-                  Exclusiv
-                </p>
-              </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                }}
-              >
-                <p
-                  className={classes.text}
-                  style={{
-                    paddingBottom: 0,
-                    paddingTop: 0,
-                    maxWidth: 800,
-                  }}
-                >
-                  <b>Výška:</b> od 40cm <br /> <b>cena:</b> od 120€
-                </p>
-              </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  position: "relative",
-                  top: -10,
-                  paddingTop: 0,
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                }}
-              >
-                <p
-                  className={classes.text}
-                  style={{
-                    maxWidth: 800,
-                  }}
-                >
-                  <span style={{ textDecoration: "underline", marginRight: 6 }}>
-                    Polykarbonátové dno:
-                  </span>
-                  Zlepené s insektáriom (pevne spojené). <br />
-                  <span style={{ textDecoration: "underline", marginRight: 6 }}>
-                    Drevené dno:
-                  </span>
-                  Umožnujúce ľahšiu údržbu (nie je pevne spojené s insektáriom).
-                </p>
-              </Grid>
-              <Grid
-                item
-                direction="row"
-                style={{
-                  position: "relative",
-                  top: -10,
-                  paddingTop: 0,
-                  width: "100%",
-                  justifyContent: "left",
-                  display: "flex",
-                }}
-              >
-                <p
-                  className={classes.text}
-                  style={{
-                    paddingTop: 0,
-                    maxWidth: 800,
-                  }}
-                >
-                  čo živé do tejto nádhery? čo len chceš a kolko len chceš
-                </p>
+              <Grid container style={{ width: "100%", maxWidth: 800 }}>
+                <Grid item className={classes.gridCard}>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.title}
+                      style={{
+                        fontWeight: 600,
+                        fontSize: 28,
+                      }}
+                    >
+                      Mini
+                    </p>
+                  </Grid>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.text}
+                      style={{
+                        paddingBottom: 0,
+                        paddingTop: 0,
+                        maxWidth: 800,
+                      }}
+                    >
+                      <b>Výška:</b> do 20 cm
+                      <br /> <b>cena:</b> od 40 €
+                    </p>
+                  </Grid>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      paddingTop: 0,
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.text}
+                      style={{
+                        maxWidth: 800,
+                      }}
+                    >
+                      Vhodné pre modlivky a malé druhy pakobyliek ako napr.
+                      Sungaya inexpectata, phyllium philippinicum.
+                    </p>
+                  </Grid>
+                </Grid>{" "}
+                <Grid item className={classes.gridCard}>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.title}
+                      style={{
+                        fontWeight: 600,
+                        fontSize: 28,
+                      }}
+                    >
+                      Klasik
+                    </p>
+                  </Grid>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.text}
+                      style={{
+                        paddingBottom: 0,
+                        paddingTop: 0,
+                        maxWidth: 800,
+                      }}
+                    >
+                      <b>Výška:</b> do 30 cm <br /> <b>cena:</b> od 80 €
+                    </p>
+                  </Grid>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      paddingTop: 0,
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.text}
+                      style={{
+                        maxWidth: 800,
+                      }}
+                    >
+                      Terárium s väčšou plochou dna. Vhodné pre pavúky,
+                      stonožky, škorpióny, mnohonôžky, suchozemské kraby,
+                      chrobáky ...
+                    </p>
+                  </Grid>
+                </Grid>{" "}
+                <Grid item className={classes.gridCard}>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                      paddingTop: 0,
+                    }}
+                  >
+                    <p
+                      className={classes.title}
+                      style={{
+                        fontWeight: 600,
+                        fontSize: 28,
+                      }}
+                    >
+                      Štandard
+                    </p>
+                  </Grid>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.text}
+                      style={{
+                        paddingBottom: 0,
+                        paddingTop: 0,
+                        maxWidth: 800,
+                      }}
+                    >
+                      <b>Výška:</b> od 28 cm <br /> <b>cena:</b> od 50 €
+                    </p>
+                  </Grid>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      paddingTop: 0,
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.text}
+                      style={{
+                        maxWidth: 800,
+                      }}
+                    >
+                      Vhodné pre všetky druhy nami chovaného hmyzu.
+                    </p>
+                  </Grid>{" "}
+                </Grid>
+                <Grid item className={classes.gridCard}>
+                  {" "}
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                      paddingTop: 0,
+                    }}
+                  >
+                    <p
+                      className={classes.title}
+                      style={{
+                        fontWeight: 600,
+                        fontSize: 28,
+                      }}
+                    >
+                      Exclusiv
+                    </p>
+                  </Grid>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.text}
+                      style={{
+                        paddingBottom: 0,
+                        paddingTop: 0,
+                        maxWidth: 800,
+                      }}
+                    >
+                      <b>Výška:</b> od 30 cm <br /> <b>cena:</b> od 120 €
+                    </p>
+                  </Grid>
+                  <Grid
+                    item
+                    direction="row"
+                    style={{
+                      paddingTop: 0,
+                      width: "100%",
+                      justifyContent: "left",
+                      display: "flex",
+                    }}
+                  >
+                    <p
+                      className={classes.text}
+                      style={{
+                        maxWidth: 800,
+                      }}
+                    >
+                      Terárium s dreveným vrchnákom
+                      <br />
+                      <span
+                        style={{ textDecoration: "underline", marginRight: 6 }}
+                      >
+                        Polykarbonátové dno:
+                      </span>
+                      Zlepené s insektáriom (pevne spojené). <br />
+                      <span
+                        style={{ textDecoration: "underline", marginRight: 6 }}
+                      >
+                        Drevené dno:
+                      </span>
+                      Umožňujúce ľahšiu údržbu (nie je pevne spojené s
+                      insektáriom).
+                    </p>
+                  </Grid>
+                </Grid>{" "}
               </Grid>
             </Grid>
           </Grid>

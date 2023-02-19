@@ -116,14 +116,6 @@ const Teraria = ({ state }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
     defaultMatches: true,
   });
-  const [type, setType] = useState("");
-  const [nalepka, setNalepka] = useState("");
-  const [material, setMaterial] = useState("");
-  const [dimensions, setDimensions] = useState({
-    vyska: 0,
-    sirka: 0,
-    hlbka: 0,
-  });
 
   return (
     <>
@@ -149,6 +141,7 @@ const Teraria = ({ state }) => {
             showBullets={true}
             items={images}
             nav={false}
+            isContact={true}
           />
         </Grid>
       </div>

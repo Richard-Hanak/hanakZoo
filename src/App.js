@@ -17,10 +17,8 @@ import Collections from "./Teraria";
 import Cerviky from "./Cerviky";
 import Galeria from "./Galeria";
 import Chrobaky from "./Chrobaky";
-import Teraria from "./Teraria";
-import ShoppingCart from "./ShoppingCart";
 import Contact from "./Contact";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
+import Teraria from "./Teraria";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const RobotoCondensedB = {
@@ -89,7 +87,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className={classes.App}>
-          <Router basename={"/hanakZoo"}>
+          <Router /* basename={"/hanakZoo"} */>
             <Switch>
               <Route exact path="/">
                 <Frontpage />
@@ -97,18 +95,13 @@ function App() {
               <Route path="/cerviky">
                 <Cerviky />
               </Route>
-              <Route path="/chrobaky">
+              <Route path="/hmyz">
                 <Chrobaky />
               </Route>
               <Route path="/teraria">
                 <Teraria />
               </Route>
-              {/* <Route path="/kosik">
-                <ShoppingCart />
-  </Route> 
-              <Route exact path="/platba">
-                <Checkout />
-              </Route> */}
+
               <Route exact path="/galeria">
                 <Galeria />
               </Route>

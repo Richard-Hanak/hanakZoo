@@ -18,8 +18,6 @@ import Link from "@material-ui/core/Link";
 import NavBar from "./NavBar";
 import BottomNav from "./BottomNav";
 import TextField from "@material-ui/core/TextField";
-import useFormValidation from "./Checkout/useFormValidation";
-import validateFormWarning from "./Checkout/validateFormWarning";
 import a1 from "./images/front1.jpg";
 import a3 from "./images/front3.jpg";
 import a2 from "./images/front2.jpg";
@@ -61,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontFamily: "RobotoCondensedB",
     color: "#136d23",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: 50,
+    },
   },
   welcomeWrap: {
     position: "relative",
@@ -86,8 +87,8 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 82,
     fontSize: 32,
     color: theme.text.secondary.main,
-    [theme.breakpoints.down("md")]: {
-      top: 80,
+    [theme.breakpoints.down("xs")]: {
+      top: 0,
       right: 54,
       padding: 0,
       fontSize: 19,
@@ -104,27 +105,13 @@ const stateMessage = {
   message: "",
 };
 
-export default function Contact({ state }) {
+const Contact = ({ state }) => {
   const classes = useStyles();
   const [thx, setThx] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
     defaultMatches: true,
   });
-  const {
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values,
-    errors,
-    isSubmitting,
-  } = useFormValidation(
-    stateMessage,
-    validateFormWarning,
-    undefined,
-    "message",
-    setThx
-  );
 
   return (
     <React.Fragment>
@@ -169,7 +156,7 @@ export default function Contact({ state }) {
                 component="h1"
                 variant="h4"
                 align="center"
-                style={{ marginTop: 100 }}
+                style={{ marginTop: isMobile ? 20 : 100 }}
               >
                 <h1 className={classes.Welcome}>Kontakt</h1>
               </Typography>
@@ -220,9 +207,7 @@ export default function Contact({ state }) {
                   className={classes.text}
                   style={{ marginTop: 20 }}
                 >
-                  E-mail:
-                  <br /> www.hanakhmyz.sk <br />
-                  objednavky@hanakhmyz.sk
+                  E-mail: objednavky@hanakhmyz.sk
                 </Typography>
               </div>
             </div>
@@ -231,4 +216,6 @@ export default function Contact({ state }) {
       </div>
     </React.Fragment>
   );
-}
+};
+
+export default Contact;
