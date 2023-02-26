@@ -12,12 +12,7 @@ import {
   ThemeProvider,
   G,
 } from "@material-ui/core/styles";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
-import NavBar from "./NavBar";
-import BottomNav from "./BottomNav";
-import TextField from "@material-ui/core/TextField";
+import PageWrapper from "./PageWrapper";
 import a1 from "./images/front1.jpg";
 import a3 from "./images/front3.jpg";
 import a2 from "./images/front2.jpg";
@@ -114,107 +109,54 @@ const Contact = ({ state }) => {
   });
 
   return (
-    <React.Fragment>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <NavBar state={state} />
-        <Grid
-          container
-          spacing={3}
-          style={{
-            height: isMobile ? "100%" : "100vh",
-            minHeight: "100vh",
-            width: "100%",
-            flexWrap: "nowrap",
-            justifyContent: "center",
-            position: "relative",
-          }}
+    <PageWrapper images={images}>
+      <CssBaseline />
+
+      <div>
+        <Typography
+          component="h1"
+          variant="h4"
+          align="center"
+          style={{ marginTop: isMobile ? 20 : 100 }}
         >
-          {!isMobile && (
-            <ImageSlider
-              isContact={true}
-              autoPlay={true}
-              thumbnails={false}
-              showBullets={true}
-              items={images}
-              nav={false}
-            />
-          )}
-          <Grid
-            item
-            xs="auto"
-            style={{
-              justifyContent: "center",
-              flexGrow: 1,
-              margin: 20,
-              position: "relative",
-            }}
+          <h1 className={classes.Welcome}>Kontakt</h1>
+        </Typography>
+
+        <div style={{ paddingTop: 40, paddingBottom: 40 }}>
+          <Typography variant="h5" align="center" className={classes.text}>
+            Ivo: 0903 390 866
+          </Typography>
+          <Typography variant="h5" align="center" className={classes.text}>
+            Jana: 0904 513 045
+          </Typography>
+          <Typography variant="h5" align="center" className={classes.text}>
+            Jakub: 0911 028 819
+          </Typography>
+          <Typography
+            variant="h5"
+            align="center"
+            className={classes.text}
+            style={{ marginTop: 20 }}
           >
-            <CssBaseline />
+            Adresa:
+            <br />
+            Nová 118
+          </Typography>
+          <Typography variant="h5" align="center" className={classes.text}>
+            Sása 962 62
+          </Typography>
 
-            <div>
-              <Typography
-                component="h1"
-                variant="h4"
-                align="center"
-                style={{ marginTop: isMobile ? 20 : 100 }}
-              >
-                <h1 className={classes.Welcome}>Kontakt</h1>
-              </Typography>
-
-              <div style={{ paddingTop: 40, paddingBottom: 40 }}>
-                <Typography
-                  variant="h5"
-                  align="center"
-                  className={classes.text}
-                >
-                  Ivo: 0903 390 866
-                </Typography>
-                <Typography
-                  variant="h5"
-                  align="center"
-                  className={classes.text}
-                >
-                  Jana: 0904 513 045
-                </Typography>
-                <Typography
-                  variant="h5"
-                  align="center"
-                  className={classes.text}
-                >
-                  Jakub: 0911 028 819
-                </Typography>
-                <Typography
-                  variant="h5"
-                  align="center"
-                  className={classes.text}
-                  style={{ marginTop: 20 }}
-                >
-                  Adresa:
-                  <br />
-                  Nová 118
-                </Typography>
-                <Typography
-                  variant="h5"
-                  align="center"
-                  className={classes.text}
-                >
-                  Sása 962 62
-                </Typography>
-
-                <Typography
-                  variant="h5"
-                  align="center"
-                  className={classes.text}
-                  style={{ marginTop: 20 }}
-                >
-                  E-mail: objednavky@hanakhmyz.sk
-                </Typography>
-              </div>
-            </div>
-          </Grid>
-        </Grid>
+          <Typography
+            variant="h5"
+            align="center"
+            className={classes.text}
+            style={{ marginTop: 20 }}
+          >
+            E-mail: objednavky@hanakhmyz.sk
+          </Typography>
+        </div>
       </div>
-    </React.Fragment>
+    </PageWrapper>
   );
 };
 

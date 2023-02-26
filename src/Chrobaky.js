@@ -17,6 +17,7 @@ import {
   Tabs,
   Tab,
 } from "@material-ui/core";
+import PageWrapper from "./PageWrapper";
 import a1 from "./images/chrobak1.jpg";
 import a2 from "./images/chrobak2.jpg";
 import a3 from "./images/chrobak3.jpg";
@@ -248,98 +249,63 @@ const Chrobaky = ({ state }) => {
 
   console.log(value);
   return (
-    <>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <NavBar state={state} />
-        <Grid
-          container
-          spacing={3}
-          style={{
-            height: isMobile ? "100%" : "100vh",
-            width: "100%",
-            flexWrap: "nowrap",
-          }}
+    <PageWrapper images={images}>
+      <Grid
+        direction="column"
+        container
+        spacing={3}
+        style={{ margin: 20, padding: 12 }}
+      >
+        <h1 className={classes.Welcome}>Exotický hmyz</h1>
+        <Tabs
+          value={value}
+          onChange={(ev, val) => setValue(val)}
+          TabIndicatorProps={{ display: "none", color: "red" }}
         >
-          <div>
-            {!isMobile && (
-              <ImageSlider
-                style={{
-                  backgroundColor: "grey",
-                  width: "56.25vh",
-                  height: "100vh",
-                }}
-                autoPlay={true}
-                thumbnails={false}
-                showBullets={true}
-                items={images}
-                nav={false}
-              />
-            )}
-          </div>{" "}
-          <Grid
-            item
-            xs="auto"
-            style={{ justifyContent: "left", flexGrow: 1, margin: 20 }}
-          >
-            <Grid
-              direction="column"
-              container
-              spacing={3}
-              style={{ margin: 20, padding: 12 }}
-            >
-              <h1 className={classes.Welcome}>Exotický hmyz</h1>
-              <Tabs
-                value={value}
-                onChange={(ev, val) => setValue(val)}
-                TabIndicatorProps={{ display: "none", color: "red" }}
-              >
-                <Tab
-                  label="Phyllium giganteum"
-                  className={classes.title}
-                  {...a11yProps(0)}
-                />
-                <Tab
-                  label="Extatosoma tiaratum"
-                  className={classes.title}
-                  {...a11yProps(1)}
-                />
-                <Tab
-                  label="Eurycantha calcarata"
-                  className={classes.title}
-                  {...a11yProps(2)}
-                />
-                <Tab
-                  label="Sungaya inexpectata"
-                  className={classes.title}
-                  {...a11yProps(3)}
-                />
-                <Tab
-                  label="Dares validipsinus"
-                  className={classes.title}
-                  {...a11yProps(4)}
-                />
-                <Tab
-                  label="Heteropteryx dilatata"
-                  className={classes.title}
-                  {...a11yProps(5)}
-                />
-                <Tab
-                  label="Phaenopharos khaoyaiensis"
-                  className={classes.title}
-                  {...a11yProps(6)}
-                />
-                <Tab
-                  label="Sphodromantis lineola"
-                  className={classes.title}
-                  {...a11yProps(7)}
-                />
-              </Tabs>{" "}
-              <TabPanel value={value} index={value}></TabPanel>
-            </Grid>
-          </Grid>
-        </Grid>
-      </div>
-    </>
+          <Tab
+            label="Phyllium giganteum"
+            className={classes.title}
+            {...a11yProps(0)}
+          />
+          <Tab
+            label="Extatosoma tiaratum"
+            className={classes.title}
+            {...a11yProps(1)}
+          />
+          <Tab
+            label="Eurycantha calcarata"
+            className={classes.title}
+            {...a11yProps(2)}
+          />
+          <Tab
+            label="Sungaya inexpectata"
+            className={classes.title}
+            {...a11yProps(3)}
+          />
+          <Tab
+            label="Dares validipsinus"
+            className={classes.title}
+            {...a11yProps(4)}
+          />
+          <Tab
+            label="Heteropteryx dilatata"
+            className={classes.title}
+            {...a11yProps(5)}
+          />
+          <Tab
+            label="Phaenopharos khaoyaiensis"
+            className={classes.title}
+            {...a11yProps(6)}
+          />
+          <Tab
+            label="Sphodromantis lineola"
+            className={classes.title}
+            {...a11yProps(7)}
+          />
+        </Tabs>{" "}
+        <TabPanel value={value} index={value}></TabPanel>
+      </Grid>
+    </PageWrapper>
   );
 };
 

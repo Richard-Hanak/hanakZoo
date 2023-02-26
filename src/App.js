@@ -43,6 +43,13 @@ const RobotoCondensedR = {
 
 function App() {
   const theme = createMuiTheme({
+    components: {
+      MuiUseMediaQuery: {
+        defaultProps: {
+          noSsr: true,
+        },
+      },
+    },
     palette: {
       primary: {
         main: "#136d23",

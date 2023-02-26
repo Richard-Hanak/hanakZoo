@@ -13,18 +13,16 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   rapper: {
+    display: "block",
+    position: "fixed",
     flexGrow: 1,
     backgroundColor: fade("#F5F3F4", 0),
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
   },
   nav: {
     display: "flex",
     flexDirection: "column",
     backgroundColor: fade("#F5F3F4", 0),
     justifyContent: "flex-start",
-
     maxWidth: 200,
   },
   navContent: {
@@ -110,8 +108,9 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = ({ alignBottom, state }) => {
   const history = useHistory();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"), {
     defaultMatches: true,
+    noSsr: true,
   });
 
   const classes = useStyles();
@@ -120,84 +119,89 @@ const NavBar = ({ alignBottom, state }) => {
 
   return (
     <>
-      <div className={classes.rapper}>
-        <AppBar position="static" color="transparent" elevation={0}>
-          <Toolbar
-            className={classes.nav}
-            style={alignBottom ? { borderTop: "none" } : {}}
-            alt="logo"
-          >
-            {window.location.pathname !== "/" && (
-              <div
-                className={alignBottom ? classes.logowrapBot : classes.logowrap}
-              >
-                <Link to="/">
-                  <img
-                    src={logo}
-                    className={alignBottom ? classes.logoBottom : classes.logo}
-                  />
+      {!isMobile && (
+        <div className={classes.rapper}>
+          <AppBar position="static" color="transparent" elevation={0}>
+            <Toolbar
+              className={classes.nav}
+              style={alignBottom ? { borderTop: "none" } : {}}
+              alt="logo"
+            >
+              {window.location.pathname !== "/" && (
+                <div
+                  className={
+                    alignBottom ? classes.logowrapBot : classes.logowrap
+                  }
+                >
+                  <Link to="/">
+                    <img
+                      src={logo}
+                      className={
+                        alignBottom ? classes.logoBottom : classes.logo
+                      }
+                    />
+                  </Link>
+                </div>
+              )}
+              <div className={classes.navContent}>
+                <Link to="/teraria">
+                  <Typography
+                    variant="h6"
+                    color="inherit"
+                    className={
+                      window.location.href.includes("teraria")
+                        ? classes.fontSelected
+                        : classes.font
+                    }
+                    style={{ position: "relative", top: 7 }}
+                  >
+                    Teráriá
+                  </Typography>
+                </Link>
+                <Link to="/hmyz">
+                  <Typography
+                    variant="h6"
+                    color="inherit"
+                    className={
+                      window.location.href.includes("/hmyz")
+                        ? classes.fontSelected
+                        : classes.font
+                    }
+                    style={{ position: "relative", top: 7 }}
+                  >
+                    Exotický hmyz
+                  </Typography>
+                </Link>
+                <Link to="/cerviky">
+                  <Typography
+                    variant="h6"
+                    color="inherit"
+                    className={
+                      window.location.href.includes("cerviky")
+                        ? classes.fontSelected
+                        : classes.font
+                    }
+                    style={{ position: "relative", top: 7 }}
+                  >
+                    Červíky
+                  </Typography>
+                </Link>
+                <Link to="/kontakt">
+                  <Typography
+                    variant="h6"
+                    color="inherit"
+                    className={
+                      window.location.href.includes("kontakt")
+                        ? classes.fontSelected
+                        : classes.font
+                    }
+                    style={{ position: "relative", top: 7 }}
+                  >
+                    Kontakt
+                  </Typography>
                 </Link>
               </div>
-            )}
-            <div className={classes.navContent}>
-              <Link to="/teraria">
-                <Typography
-                  variant="h6"
-                  color="inherit"
-                  className={
-                    window.location.href.includes("teraria")
-                      ? classes.fontSelected
-                      : classes.font
-                  }
-                  style={{ position: "relative", top: 7 }}
-                >
-                  Teráriá
-                </Typography>
-              </Link>
-              <Link to="/hmyz">
-                <Typography
-                  variant="h6"
-                  color="inherit"
-                  className={
-                    window.location.href.includes("/hmyz")
-                      ? classes.fontSelected
-                      : classes.font
-                  }
-                  style={{ position: "relative", top: 7 }}
-                >
-                  Exotický hmyz
-                </Typography>
-              </Link>
-              <Link to="/cerviky">
-                <Typography
-                  variant="h6"
-                  color="inherit"
-                  className={
-                    window.location.href.includes("cerviky")
-                      ? classes.fontSelected
-                      : classes.font
-                  }
-                  style={{ position: "relative", top: 7 }}
-                >
-                  Červíky
-                </Typography>
-              </Link>
-              <Link to="/kontakt">
-                <Typography
-                  variant="h6"
-                  color="inherit"
-                  className={
-                    window.location.href.includes("kontakt")
-                      ? classes.fontSelected
-                      : classes.font
-                  }
-                  style={{ position: "relative", top: 7 }}
-                >
-                  Kontakt
-                </Typography>
-              </Link>
-            </div>
-            {/* <Link to="/kosik">
+              {/* <Link to="/kosik">
             <Badge
               badgeContent={badgeContent.buy + badgeContent.rent}
               color="error"
@@ -205,9 +209,10 @@ const NavBar = ({ alignBottom, state }) => {
             />
             <ShoppingCartOutlinedIcon className={classes.cart} />
           </Link>  */}
-          </Toolbar>
-        </AppBar>
-      </div>
+            </Toolbar>
+          </AppBar>
+        </div>
+      )}
 
       <div style={isMobile ? {} : { display: "none" }}>
         <div className="container"></div>

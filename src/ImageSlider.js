@@ -1,12 +1,22 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 function ImageSlider(props) {
+  const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.down("md"), {
+    defaultMatches: true,
+    noSsr: true,
+  });
+
   return (
     <div
       style={{
         boxShadow: "0 0 20px 0px #0000008c",
         marginRight: props.isContact ? 0 : 100,
+        position: "fixed",
+        marginLeft: isMd ? 0 : 200,
       }}
     >
       <ImageGallery
