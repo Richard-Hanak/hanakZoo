@@ -10,12 +10,12 @@ import {
   G,
 } from "@material-ui/core/styles";
 import { Typography, Grid, Button } from "@material-ui/core";
+import PageWrapper from "./PageWrapper";
 import frontLogo from "./images/logoM.jpg";
 import a1 from "./images/front1.jpg";
 import a3 from "./images/front3.jpg";
 import a2 from "./images/front2.jpg";
 import a4 from "./images/terar3.jpg";
-import PageWrapper from "./PageWrapper";
 
 const images = [
   {
