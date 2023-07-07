@@ -1,15 +1,24 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+
+
 .image-gallery-thumbnails-wrapper
   .image-gallery-thumbnails
   .image-gallery-thumbnails-container {
   position: relative;
   z-index: 1000;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box !important;
+.sideImg .image-gallery-content .image-gallery-slide .image-gallery-image {
+  max-height: 100vh;
+}
+.sideImg .image-gallery-slide .image-gallery-image {
+  width: 56.25vh;
 }
 
 a {
@@ -29,13 +38,41 @@ p {
   text-align: left !important;
 }
 
-.image-gallery-content .image-gallery-slide .image-gallery-image {
-  max-height: 100vh;
+.cardImgTrans .image-gallery-svg{
+    display: block;
+  position: relative;
+  top: 20px;
+  height: 60px;
+  width: 30px;
+  transition: all 0.8s ease 0s; 
+  transition-delay: 0.1s;
+}
+.cardImg .image-gallery-svg {
+    display: block;
+  position: relative;
+  top: 200px;
+  height: 60px;
+  width: 30px;
 }
 
-.image-gallery-slide .image-gallery-image {
-  width: 56.25vh;
+.cardImg .image-gallery-content .image-gallery-slide .image-gallery-image  {
+  max-height: 360px !important;
+  display: block;
+  position: relative;
+  top: 200px;
 }
+
+.cardImgTrans .image-gallery-content .image-gallery-slide .image-gallery-image  {
+  max-height: 360px !important;
+  display: block;
+  position: relative;
+  top: 20px;
+  transition: all 0.7s ease 0s;
+     transition-delay: 0.1s;
+}
+
+
+
 .MuiGrid-spacing-xs-3 {
   margin: 0 !important;
 }
@@ -250,4 +287,13 @@ h1 {
   line-height: 1.75;
   white-space: normal;
   text-transform: uppercase;
+}
+
+.MuiAccordionSummary-content.Mui-expanded {
+  margin: 0!important;
+  margin-top: 10!important
+}
+
+.MuiAccordionDetails-root {
+  padding-top: 0 !important;
 }

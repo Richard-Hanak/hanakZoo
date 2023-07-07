@@ -17,6 +17,8 @@ function ImageSlider(props) {
         marginRight: props.isContact ? 0 : 100,
         position: "fixed",
         marginLeft: isMd ? 0 : 200,
+        maxHeight: "100vh",
+        width: "56.25vh",
       }}
     >
       <ImageGallery
@@ -28,6 +30,7 @@ function ImageSlider(props) {
         showThumbnails={props.thumbnails}
         showNav={props.nav}
         infinite={true}
+        additionalClass="sideImg"
       />
     </div>
   );

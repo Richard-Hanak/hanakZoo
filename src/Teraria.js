@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import ImageSlider from "./ImageSlider";
-import NavBar from "./NavBar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import ImageGallery from "react-image-gallery";
 import {
   useTheme,
   makeStyles,
@@ -11,6 +10,10 @@ import {
 import {
   Slider,
   Grid,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
   RadioGroup,
   FormControlLabel,
   Radio,
@@ -21,6 +24,16 @@ import a2 from "./images/terar2.jpg";
 import a3 from "./images/terar3.jpg";
 import a4 from "./images/terar4.jpg";
 import a5 from "./images/terar5.jpg";
+import exclusiv1 from "./images/teraria/exclusiv1.png";
+import exclusiv2 from "./images/teraria/exclusiv2.png";
+import klasik1 from "./images/teraria/klasik1.png";
+import klasik2 from "./images/teraria/klasik2.jpg";
+import mini1 from "./images/teraria/mini1.jpg";
+import mini2 from "./images/teraria/mini2.jpg";
+import standard1 from "./images/teraria/standard1.png";
+import standard2 from "./images/teraria/standard2.png";
+import standardP1 from "./images/teraria/standardP1.png";
+import standardP2 from "./images/teraria/standardP2.png";
 
 const images = [
   {
@@ -90,11 +103,189 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Teraria = ({ state }) => {
+  const [expandedIndex, setExpandedIndex] = useState(0);
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
     defaultMatches: true,
   });
+  console.log(klasik1.clientHeight);
+  const renderTerrariaCollapse = () => {
+    const terariaData = [
+      {
+        title: "Mini",
+        height: "do 20 cm",
+        price: "od 40 €",
+        description: (
+          <p
+            className={classes.text}
+            style={{
+              maxWidth: 800,
+            }}
+          >
+            Vhodné pre modlivky a malé druhy pakobyliek ako napr. Sungaya
+            inexpectata, phyllium philippinicum.
+          </p>
+        ),
+        images: [mini1, mini2],
+        cardContentheight: 276,
+      },
+      {
+        title: "Klasik",
+        height: "do 30 cm",
+        price: "od 80 €",
+        description: (
+          <p
+            className={classes.text}
+            style={{
+              maxWidth: 800,
+            }}
+          >
+            Terárium s väčšou plochou dna. Vhodné pre pavúky, stonožky,
+            škorpióny, mnohonôžky, suchozemské kraby, chrobáky ...
+          </p>
+        ),
+        images: [klasik1, klasik2],
+        cardContentheight: 276,
+      },
+      {
+        title: "Štandard",
+        height: "od 28 cm",
+        price: "od 50 €",
+        description: (
+          <p
+            className={classes.text}
+            style={{
+              maxWidth: 800,
+            }}
+          >
+            Vhodné pre všetky druhy nami chovaného hmyzu.
+          </p>
+        ),
+        images: [standard1, standard2],
+        cardContentheight: 310,
+      },
+      {
+        title: "Štandard +",
+        height: "od 28 cm",
+        price: "od 70 €",
+        description: (
+          <p
+            className={classes.text}
+            style={{
+              maxWidth: 800,
+            }}
+          >
+            Štandard s dreveným vrchnákom
+          </p>
+        ),
+        images: [standardP1, standardP2],
+        cardContentheight: 310,
+      },
+      {
+        title: "Exclusiv",
+        height: "od 30 cm",
+        price: "od 120 €",
+        description: (
+          <p
+            className={classes.text}
+            style={{
+              maxWidth: 800,
+            }}
+          >
+            Terárium s dreveným vrchnákom
+            <br />
+            <span style={{ textDecoration: "underline", marginRight: 6 }}>
+              Polykarbonátové dno:
+            </span>
+            Zlepené s insektáriom (pevne spojené). <br />
+            <span style={{ textDecoration: "underline", marginRight: 6 }}>
+              Drevené dno:
+            </span>
+            Umožňujúce ľahšiu údržbu (nie je pevne spojené s insektáriom).
+          </p>
+        ),
+        images: [exclusiv1, exclusiv2],
+        cardContentheight: 310,
+      },
+    ];
+
+    return terariaData.map((e, i) => (
+      <Accordion
+        expanded={expandedIndex === i}
+        onChange={() => setExpandedIndex(i)}
+        style={{
+          width: "150%",
+          margin: 4,
+          backgroundColor: "#fbfbfb",
+          // maxHeight: 400,
+        }}
+      >
+        <AccordionSummary>
+          <Typography
+            className={classes.title}
+            style={{
+              fontWeight: 600,
+              fontSize: 28,
+            }}
+          >
+            {e.title}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails
+          style={{
+            position: "relative",
+            top: -64,
+            height: e.cardContentheight,
+          }}
+        >
+          <Grid
+            container
+            direction="row"
+            style={{
+              width: "50%",
+              justifyContent: "left",
+              display: "flex",
+              marginTop: 64,
+            }}
+          >
+            <div style={{ height: 60 }}>
+              <p className={classes.text}>
+                <b>Výška:</b> {e.height}
+                <br /> <b>cena:</b> {e.price}
+              </p>
+              <br />
+              {e.description}
+            </div>
+          </Grid>
+          <Grid
+            container
+            direction="row"
+            style={{
+              width: "50%",
+              justifyContent: "right",
+              display: "flex",
+            }}
+          >
+            <ImageGallery
+              items={e.images.map((e) => {
+                return {
+                  original: e,
+                };
+              })}
+              showFullscreenButton={false}
+              showThumbnails={false}
+              showPlayButton={false}
+              autoPlay={false}
+              showNav={true}
+              infinite={true}
+              additionalClass={expandedIndex === i ? "cardImgTrans" : "cardImg"}
+            />
+          </Grid>
+        </AccordionDetails>
+      </Accordion>
+    ));
+  };
 
   return (
     <PageWrapper images={images}>
@@ -157,262 +348,9 @@ const Teraria = ({ state }) => {
             možnosť zaslať kuriérom. Balné + kurier cca 15 €
           </p>
         </Grid>
-        <Grid container style={{ width: "100%", maxWidth: 800 }}>
-          <Grid item className={classes.gridCard}>
-            <Grid
-              item
-              direction="row"
-              style={{
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.title}
-                style={{
-                  fontWeight: 600,
-                  fontSize: 28,
-                }}
-              >
-                Mini
-              </p>
-            </Grid>
-            <Grid
-              item
-              direction="row"
-              style={{
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.text}
-                style={{
-                  paddingBottom: 0,
-                  paddingTop: 0,
-                  maxWidth: 800,
-                }}
-              >
-                <b>Výška:</b> do 20 cm
-                <br /> <b>cena:</b> od 40 €
-              </p>
-            </Grid>
-            <Grid
-              item
-              direction="row"
-              style={{
-                paddingTop: 0,
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.text}
-                style={{
-                  maxWidth: 800,
-                }}
-              >
-                Vhodné pre modlivky a malé druhy pakobyliek ako napr. Sungaya
-                inexpectata, phyllium philippinicum.
-              </p>
-            </Grid>
-          </Grid>{" "}
-          <Grid item className={classes.gridCard}>
-            <Grid
-              item
-              direction="row"
-              style={{
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.title}
-                style={{
-                  fontWeight: 600,
-                  fontSize: 28,
-                }}
-              >
-                Klasik
-              </p>
-            </Grid>
-            <Grid
-              item
-              direction="row"
-              style={{
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.text}
-                style={{
-                  paddingBottom: 0,
-                  paddingTop: 0,
-                  maxWidth: 800,
-                }}
-              >
-                <b>Výška:</b> do 30 cm <br /> <b>cena:</b> od 80 €
-              </p>
-            </Grid>
-            <Grid
-              item
-              direction="row"
-              style={{
-                paddingTop: 0,
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.text}
-                style={{
-                  maxWidth: 800,
-                }}
-              >
-                Terárium s väčšou plochou dna. Vhodné pre pavúky, stonožky,
-                škorpióny, mnohonôžky, suchozemské kraby, chrobáky ...
-              </p>
-            </Grid>
-          </Grid>{" "}
-          <Grid item className={classes.gridCard}>
-            <Grid
-              item
-              direction="row"
-              style={{
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-                paddingTop: 0,
-              }}
-            >
-              <p
-                className={classes.title}
-                style={{
-                  fontWeight: 600,
-                  fontSize: 28,
-                }}
-              >
-                Štandard
-              </p>
-            </Grid>
-            <Grid
-              item
-              direction="row"
-              style={{
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.text}
-                style={{
-                  paddingBottom: 0,
-                  paddingTop: 0,
-                  maxWidth: 800,
-                }}
-              >
-                <b>Výška:</b> od 28 cm <br /> <b>cena:</b> od 50 €
-              </p>
-            </Grid>
-            <Grid
-              item
-              direction="row"
-              style={{
-                paddingTop: 0,
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.text}
-                style={{
-                  maxWidth: 800,
-                }}
-              >
-                Vhodné pre všetky druhy nami chovaného hmyzu.
-              </p>
-            </Grid>{" "}
-          </Grid>
-          <Grid item className={classes.gridCard}>
-            {" "}
-            <Grid
-              item
-              direction="row"
-              style={{
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-                paddingTop: 0,
-              }}
-            >
-              <p
-                className={classes.title}
-                style={{
-                  fontWeight: 600,
-                  fontSize: 28,
-                }}
-              >
-                Exclusiv
-              </p>
-            </Grid>
-            <Grid
-              item
-              direction="row"
-              style={{
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.text}
-                style={{
-                  paddingBottom: 0,
-                  paddingTop: 0,
-                  maxWidth: 800,
-                }}
-              >
-                <b>Výška:</b> od 30 cm <br /> <b>cena:</b> od 120 €
-              </p>
-            </Grid>
-            <Grid
-              item
-              direction="row"
-              style={{
-                paddingTop: 0,
-                width: "100%",
-                justifyContent: "left",
-                display: "flex",
-              }}
-            >
-              <p
-                className={classes.text}
-                style={{
-                  maxWidth: 800,
-                }}
-              >
-                Terárium s dreveným vrchnákom
-                <br />
-                <span style={{ textDecoration: "underline", marginRight: 6 }}>
-                  Polykarbonátové dno:
-                </span>
-                Zlepené s insektáriom (pevne spojené). <br />
-                <span style={{ textDecoration: "underline", marginRight: 6 }}>
-                  Drevené dno:
-                </span>
-                Umožňujúce ľahšiu údržbu (nie je pevne spojené s insektáriom).
-              </p>
-            </Grid>
-          </Grid>{" "}
+
+        <Grid container style={{ width: "100%", maxWidth: 950 }}>
+          {renderTerrariaCollapse()}
         </Grid>
       </Grid>
     </PageWrapper>
