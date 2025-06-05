@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import moment from "moment";
 import ImageSlider from "./ImageSlider";
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
@@ -16,6 +18,11 @@ import a1 from "./images/front1.jpg";
 import a3 from "./images/front3.jpg";
 import a2 from "./images/front2.jpg";
 import a4 from "./images/terar3.jpg";
+
+//
+
+const API_KEY = "AIzaSyAiUzVJPkyfTkNa5lcDkpSv0DqMaLTj3Gg";
+const CALENDAR_ID = "hanak.hmyz@gmail.com";
 
 const images = [
   {
@@ -55,6 +62,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
+  textAlt: {
+    fontSize: 18,
+    textAlign: "center",
+    color: theme.text.primary.main,
+    [theme.breakpoints.down("md")]: {
+      padding: 0,
+      fontSize: 17,
+    },
+  },
+
   button: {
     padding: 1,
     paddingLeft: 22,
@@ -69,6 +86,33 @@ const Frontpage = ({ state }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
     defaultMatches: true,
   });
+
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const now = new Date().toISOString();
+        const res = await axios.get(
+          `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(
+            CALENDAR_ID
+          )}/events?key=${API_KEY}&timeMin=${now}&maxResults=20&singleEvents=true&orderBy=startTime`
+        );
+
+        const formattedEvents = res.data.items.map((event) => ({
+          title: event.summary,
+          start: new Date(event.start.dateTime || event.start.date),
+        }));
+
+        setEvents(formattedEvents);
+      } catch (error) {
+        console.error("Failed to fetch events", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
   return (
     <PageWrapper images={images}>
       <Grid
@@ -115,6 +159,51 @@ const Frontpage = ({ state }) => {
             Viac ako 20-ročná tradícia v chove exotických druhov plazov a hmyzu
           </h4>
         </Grid>
+
+        {!!events.length &&
+          events.map((e) => (
+            <>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  width: "100%",
+                  justifyContent: "center",
+                  display: "flex",
+                }}
+              >
+                <p
+                  className={classes.text}
+                  style={{
+                    paddingTop: isMobile ? 10 : 30,
+                    fontWeight: 600,
+                  }}
+                >
+                  Najbližšie sa uvidíme na:
+                </p>
+              </Grid>
+              <Grid
+                item
+                direction="row"
+                style={{
+                  width: "100%",
+                  justifyContent: "center",
+                  display: "flex",
+                }}
+              >
+                <p
+                  className={classes.textAlt}
+                  style={{
+                    paddingTop: isMobile ? 10 : 20,
+                    fontWeight: 600,
+                  }}
+                >
+                  {`${e.title} - ${moment(e.start).format("DD.MM.YYYY HH:mm")}`}
+                </p>
+              </Grid>
+            </>
+          ))}
+
         <Grid
           item
           direction="row"
@@ -127,7 +216,7 @@ const Frontpage = ({ state }) => {
           <p
             className={classes.text}
             style={{
-              paddingTop: isMobile ? 70 : 100,
+              paddingTop: isMobile ? 70 : events.length ? 60 : 100,
               fontWeight: 600,
             }}
           >
@@ -147,7 +236,7 @@ const Frontpage = ({ state }) => {
           <p
             className={classes.text}
             style={{
-              paddingTop: isMobile ? 80 : 160,
+              paddingTop: isMobile ? 80 : events.length ? 80 : 160,
             }}
           >
             Chov však nestačí, chceme ponúknuť našim zákazníkom vhodné podmienky
