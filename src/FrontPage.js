@@ -159,29 +159,28 @@ const Frontpage = ({ state }) => {
             Viac ako 20-ročná tradícia v chove exotických druhov plazov a hmyzu
           </h4>
         </Grid>
-
-        {!!events.length &&
-          events.map((e) => (
-            <>
-              <Grid
-                item
-                direction="row"
+        {!!events.length && (
+          <>
+            <Grid
+              item
+              direction="row"
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                display: "flex",
+              }}
+            >
+              <p
+                className={classes.text}
                 style={{
-                  width: "100%",
-                  justifyContent: "center",
-                  display: "flex",
+                  paddingTop: isMobile ? 10 : 30,
+                  fontWeight: 600,
                 }}
               >
-                <p
-                  className={classes.text}
-                  style={{
-                    paddingTop: isMobile ? 10 : 30,
-                    fontWeight: 600,
-                  }}
-                >
-                  Najbližšie sa uvidíme na:
-                </p>
-              </Grid>
+                Najbližšie sa uvidíme na:
+              </p>
+            </Grid>
+            {events.map((e) => (
               <Grid
                 item
                 direction="row"
@@ -198,11 +197,12 @@ const Frontpage = ({ state }) => {
                     fontWeight: 600,
                   }}
                 >
-                  {`${e.title} - ${moment(e.start).format("DD.MM.YYYY HH:mm")}`}
+                  {`${e.title} - ${moment(e.start).format("DD.MM.YYYY")}`}
                 </p>
               </Grid>
-            </>
-          ))}
+            ))}
+          </>
+        )}
 
         <Grid
           item
